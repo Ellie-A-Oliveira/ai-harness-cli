@@ -16,7 +16,7 @@ These requirements apply to every agent session and every registered repository.
 - `approved` and `safe_read_only` commands may proceed within their intended scope.
 - `requires_approval` commands need explicit user approval and a narrowly scoped command.
 - `blocked` commands must not run.
-- All harness CLI commands and non-destructive `git ...` commands are pre-approved, including environment-prefixed forms. Destructive Git commands—hard reset, destructive restore/checkout, clean, branch deletion, force-push, rebase, and history cleanup—remain blocked.
+- All harness CLI commands, non-destructive `git ...` commands, and required repository toolchains are pre-approved, including Maven/Spring Boot, Node/NestJS, Python/FastAPI, pytest, and Docker Compose commands. Destructive Git commands—reset, destructive restore/checkout, clean, branch deletion, force-push, rebase, and history cleanup—remain blocked.
 - Shell chaining, redirection, command substitution, and pipelines are blocked by default.
 - Never use broad or unresolved destructive targets such as workspace roots, home directories, `/`, `~`, or recursive globs.
 

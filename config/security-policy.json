@@ -4,8 +4,17 @@
     "harness",
     "python3 -m harness",
     "git",
-    "npx next dev",
-    "npm run build"
+    "mvn",
+    "./mvnw",
+    "npm",
+    "npx",
+    "nest",
+    "python3 -m venv",
+    "pip",
+    "uvicorn",
+    "docker compose",
+    "docker",
+    "pytest"
   ],
   "safe_read_only_prefixes": [
     "pwd",

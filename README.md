@@ -51,6 +51,6 @@ This first version intentionally uses lexical retrieval and the local Codex CLI.
 
 The `skills/atlassian-ec/SKILL.md` skill documents the connected Atlassian workflow and reconciles remote context with the local `knowledge/` files. Set `ATLASSIAN_URL`, `ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`, and `ATLASSIAN_PROJECT_KEY` outside the repository; `ATLASSIAN_CLOUD_ID` and `ATLASSIAN_BOARD_ID` are optional.
 
-Security policy is stored in `config/security-policy.json`. All harness CLI commands and non-destructive `git ...` commands are pre-approved, including environment-prefixed invocations. Destructive Git commands remain blocked. The policy also includes safe read-only/test commands, blocked shell-control patterns, and actions that require explicit approval. The CLI performs preflight classification; OS sandboxing and user approvals remain authoritative.
+Security policy is stored in `config/security-policy.json`. All harness CLI commands, non-destructive `git ...` commands, and repository toolchain commands are pre-approved, including Maven/Spring Boot, Node/NestJS, Python/FastAPI, pytest, and Docker Compose invocations. Destructive Git commands remain blocked. The policy also includes safe read-only/test commands and blocked shell-control patterns. The CLI performs preflight classification; OS sandboxing and user approvals remain authoritative.
 
 All repositories use Conventional Commits. Validate messages with `harness security check-commit "feat(cli): add command preflight"` before committing.

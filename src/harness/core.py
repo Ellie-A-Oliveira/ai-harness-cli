@@ -69,7 +69,7 @@ class Workspace:
         if not self.security_policy_path.exists():
             self.security_policy_path.write_text(json.dumps({
                 "version": 1,
-                "approved_prefixes": ["harness", "python3 -m harness", "git", "npx next dev", "npm run build"],
+                "approved_prefixes": ["harness", "python3 -m harness", "git", "mvn", "./mvnw", "npm", "npx", "nest", "python3 -m venv", "pip", "uvicorn", "docker compose", "docker", "pytest"],
                 "safe_read_only_prefixes": ["pwd", "ls", "rg", "git status", "git diff", "git log", "git show", "git branch", "git rev-parse", "find", "sed", "head", "tail", "python3 -m unittest", "npm test"],
                 "blocked_prefixes": ["sudo", "rm", "rmdir", "git reset", "git checkout --", "git checkout -B", "git restore", "git clean", "git branch -d", "git branch -D", "git push --force", "git push -f", "git push --force-with-lease", "git switch --discard-changes", "git rebase", "git filter-repo", "git reflog delete", "git reflog expire", "git gc --prune", "git update-ref -d", "dd", "mkfs", "chmod 777", "kill", "pkill"],
                 "blocked_shell_tokens": [";", "&&", "||", "|", ">", "<", "`", "$(", "\\n"],
