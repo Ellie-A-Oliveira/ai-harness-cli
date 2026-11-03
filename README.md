@@ -45,6 +45,8 @@ Sources remain in place; the CLI registers their paths and indexes text into a l
 - `security show` prints the command and agent security policy.
 - `security check-command COMMAND` classifies a command before execution.
 
+The `skills/story-to-implementation/SKILL.md` skill plans Jira stories before implementation, waits for explicit approval, and then uses one validated trunk-based branch name across all affected repositories.
+
 This first version intentionally uses lexical retrieval and the local Codex CLI. That keeps setup simple while leaving clear seams for embeddings, reranking, and remote stores later.
 
 The `skills/atlassian-ec/SKILL.md` skill documents the connected Atlassian workflow and reconciles remote context with the local `knowledge/` files. Set `ATLASSIAN_URL`, `ATLASSIAN_EMAIL`, `ATLASSIAN_API_TOKEN`, and `ATLASSIAN_PROJECT_KEY` outside the repository; `ATLASSIAN_CLOUD_ID` and `ATLASSIAN_BOARD_ID` are optional.
