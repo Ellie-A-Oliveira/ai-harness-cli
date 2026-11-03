@@ -14,3 +14,4 @@ These rules are mandatory shared knowledge for every agent session:
 10. All harness CLI commands, non-destructive `git ...` commands, and repository toolchain commands are pre-approved, including environment-prefixed forms: Maven/Spring Boot (`mvn`, `./mvnw`), Node/NestJS (`npm`, `npx`, `nest`), Python/FastAPI (`python3 -m venv`, `pip`, `uvicorn`, `pytest`), and Docker (`docker`, `docker compose`). Destructive Git commands remain blocked.
 11. Use Conventional Commits for every repository: `type(scope): description`, such as `feat(cli): add command preflight` or `fix(index): ignore generated files`.
 12. Run `harness security check-commit "<message>"` before committing.
+13. For any pull-request, change, diff, or implementation review, always load and follow `skills/pr-reviewer/SKILL.md`; reviews are read-only by default and must use its evidence-based findings format.

@@ -19,6 +19,8 @@ The `codex` command retrieves relevant local context, writes a grounded prompt, 
 
 Every agent session must use this CLI for all work, including sessions launched inside any registered repository. Start with `harness doctor` and `harness index`, retrieve context with `harness ask`, and launch implementation through `harness codex`. Do not bypass the harness with direct agent work.
 
+Any pull-request, change, diff, or implementation review must load and follow `skills/pr-reviewer/SKILL.md` before reviewing. The review skill is mandatory and defines the required grounding, findings, coverage, and read-only review behavior.
+
 ## Workspace layout
 
 ```text
