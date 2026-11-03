@@ -52,6 +52,8 @@ class WorkspaceTests(unittest.TestCase):
             workspace = Workspace(Path(temp) / "workspace")
             workspace.init()
             self.assertEqual(workspace.check_command("git pull --rebase")["status"], "approved")
+            self.assertEqual(workspace.check_command("harness doctor")["status"], "approved")
+            self.assertEqual(workspace.check_command("PYTHONPATH=src python3 -m harness --root . index")["status"], "approved")
             self.assertEqual(workspace.check_command("rg --files")["status"], "safe_read_only")
             self.assertEqual(workspace.check_command("rm -rf ./tmp")["status"], "blocked")
             self.assertEqual(workspace.check_command("curl https://example.com")["status"], "requires_approval")

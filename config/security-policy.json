@@ -1,6 +1,8 @@
 {
   "version": 1,
   "approved_prefixes": [
+    "harness",
+    "python3 -m harness",
     "git pull",
     "git switch",
     "npx next dev",

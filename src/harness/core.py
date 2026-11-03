@@ -69,7 +69,7 @@ class Workspace:
         if not self.security_policy_path.exists():
             self.security_policy_path.write_text(json.dumps({
                 "version": 1,
-                "approved_prefixes": ["git pull", "git switch", "npx next dev", "npm run build"],
+                "approved_prefixes": ["harness", "python3 -m harness", "git pull", "git switch", "npx next dev", "npm run build"],
                 "safe_read_only_prefixes": ["pwd", "ls", "rg", "git status", "git diff", "git log", "git show", "git branch", "git rev-parse", "find", "sed", "head", "tail", "python3 -m unittest", "npm test"],
                 "blocked_prefixes": ["sudo", "rm", "rmdir", "git reset --hard", "git checkout --", "git clean", "dd", "mkfs", "chmod 777", "kill", "pkill"],
                 "blocked_shell_tokens": [";", "&&", "||", "|", ">", "<", "`", "$(", "\\n"],
@@ -93,6 +93,9 @@ class Workspace:
             tokens = shlex.split(command)
         except ValueError as exc:
             return {"status": "blocked", "reason": f"invalid shell quoting: {exc}", "command": command}
+
+        while tokens and re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*=.*", tokens[0]):
+            tokens.pop(0)
 
         def matches(prefix: str) -> bool:
             expected = shlex.split(prefix)
