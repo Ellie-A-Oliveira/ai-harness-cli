@@ -35,6 +35,35 @@ class WorkspaceTests(unittest.TestCase):
             index = json.loads(workspace.index_path.read_text())
             self.assertEqual(len(index["chunks"]), 1)
 
+    def test_atlassian_config_is_environment_backed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            workspace = Workspace(Path(temp) / "workspace")
+            workspace.init()
+            config = json.loads(workspace.atlassian_config_path.read_text())
+            self.assertEqual(config["site_url_env"], "ATLASSIAN_URL")
+            self.assertNotIn("site_url", config)
+            self.assertIn("api_token_env", config)
+
+    def test_prompt_requires_harness_cli(self):
+        self.assertIn("use the harness CLI for all work", build_prompt("inspect the project", []))
+
+    def test_security_policy_classifies_commands(self):
+        with tempfile.TemporaryDirectory() as temp:
+            workspace = Workspace(Path(temp) / "workspace")
+            workspace.init()
+            self.assertEqual(workspace.check_command("git pull --rebase")["status"], "approved")
+            self.assertEqual(workspace.check_command("rg --files")["status"], "safe_read_only")
+            self.assertEqual(workspace.check_command("rm -rf ./tmp")["status"], "blocked")
+            self.assertEqual(workspace.check_command("curl https://example.com")["status"], "requires_approval")
+            self.assertEqual(workspace.check_command("rg foo && npm test")["status"], "blocked")
+
+    def test_conventional_commit_validation(self):
+        with tempfile.TemporaryDirectory() as temp:
+            workspace = Workspace(Path(temp) / "workspace")
+            workspace.init()
+            self.assertEqual(workspace.check_commit_message("feat(cli): add policy check")["status"], "valid")
+            self.assertEqual(workspace.check_commit_message("Add policy check")["status"], "invalid")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,10 @@
+{
+  "site_url_env": "ATLASSIAN_URL",
+  "cloud_id_env": "ATLASSIAN_CLOUD_ID",
+  "project_key_env": "ATLASSIAN_PROJECT_KEY",
+  "board_id_env": "ATLASSIAN_BOARD_ID",
+  "email_env": "ATLASSIAN_EMAIL",
+  "api_token_env": "ATLASSIAN_API_TOKEN",
+  "auth": "environment variables or connected Atlassian MCP",
+  "last_snapshot_at": null
+}

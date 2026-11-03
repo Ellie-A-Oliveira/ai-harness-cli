@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "approved_prefixes": [
+    "git pull",
+    "git switch",
+    "npx next dev",
+    "npm run build"
+  ],
+  "safe_read_only_prefixes": [
+    "pwd",
+    "ls",
+    "rg",
+    "git status",
+    "git diff",
+    "git log",
+    "git show",
+    "git branch",
+    "git rev-parse",
+    "find",
+    "sed",
+    "head",
+    "tail",
+    "python3 -m unittest",
+    "npm test"
+  ],
+  "blocked_prefixes": [
+    "sudo",
+    "rm",
+    "rmdir",
+    "git reset --hard",
+    "git checkout --",
+    "git clean",
+    "dd",
+    "mkfs",
+    "chmod 777",
+    "kill",
+    "pkill"
+  ],
+  "blocked_shell_tokens": [
+    ";",
+    "&&",
+    "||",
+    "|",
+    ">",
+    "<",
+    "`",
+    "$(",
+    "\\n"
+  ],
+  "requires_explicit_approval": [
+    "network access",
+    "package installation",
+    "credential access",
+    "destructive file operations",
+    "external writes",
+    "publishing or messaging"
+  ],
+  "commit_message_format": "type(scope): description",
+  "commit_types": ["feat", "fix", "docs", "refactor", "test", "chore", "build", "ci", "perf", "revert", "style"],
+  "notes": "This policy is a preflight check and documentation. OS sandboxing and user approval remain authoritative."
+}
