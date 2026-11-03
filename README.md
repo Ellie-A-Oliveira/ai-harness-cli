@@ -31,6 +31,8 @@ workspace/
 
 Sources remain in place; the CLI registers their paths and indexes text into a local, git-friendly JSON index. Do not add secrets or generated credentials to indexed source paths.
 
+When a workspace contains a `skills/` directory, `harness init` automatically registers it as `harness-skills`, so local skills such as `skills/pr-reviewer/SKILL.md` are available to `harness ask` and grounded `harness codex` prompts.
+
 ## Commands
 
 - `init PATH` creates a workspace.

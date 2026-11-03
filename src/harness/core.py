@@ -61,6 +61,9 @@ class Workspace:
             self.config_path.write_text(json.dumps({"version": 1, "created_at": now(), "chunk_size": 1200, "top_k": 6}, indent=2) + "\n")
         if not self.sources_path.exists():
             self.save_sources([])
+        skills_path = self.root / "skills"
+        if skills_path.is_dir():
+            self.add(skills_path, "harness-skills")
         self.configure_atlassian()
         self.configure_security()
 

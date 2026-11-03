@@ -21,6 +21,16 @@ class WorkspaceTests(unittest.TestCase):
             self.assertEqual(results[0]["path"], "README.md")
             self.assertIn("Retrieval", build_prompt("improve retrieval", results))
 
+    def test_init_registers_local_skills(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp) / "workspace"
+            (root / "skills" / "example").mkdir(parents=True)
+            (root / "skills" / "example" / "SKILL.md").write_text("Example skill")
+            workspace = Workspace(root)
+            workspace.init()
+            self.assertEqual(workspace.sources()[0]["name"], "harness-skills")
+            self.assertEqual(workspace.index(), 1)
+
     def test_ignores_generated_directories(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "workspace"
