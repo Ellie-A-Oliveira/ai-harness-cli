@@ -11,5 +11,9 @@ Source: local repository inspection, 2026-11-02.
 - Event changes should remain additive and backward compatible; breaking changes require a new version or coordinated migration.
 - Keep orchestration in `order-service`, state ownership in the owning service, and compatibility rules in `event-contracts`.
 - Add contract tests with event changes and document infrastructure startup changes.
+- In `product-service`, use Spring Data JPA repositories with Flyway-owned schema migrations; do not use Hibernate schema creation for application startup.
+- Store prices as non-negative integer cents, use stable string IDs, and enforce non-negative availability quantities at the database boundary.
+- Product read responses expose product identity/details, current `priceInCents`, `availableStock`, `active`, `available`, and category IDs.
+- PostgreSQL integration tests use Testcontainers with `@DynamicPropertySource`; Docker Desktop is required locally.
 
 Prototype caveat: in-memory maps/lists, demo products, simulated payment failure, and development RabbitMQ credentials are not production patterns.

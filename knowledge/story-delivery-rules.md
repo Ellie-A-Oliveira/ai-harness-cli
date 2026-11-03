@@ -8,3 +8,5 @@ Stories are planned before implementation and implemented only after explicit us
 - Use Conventional Commits and validate them through the harness.
 - Do not push branches or write to Jira/Confluence unless separately authorized.
 - Stop on dirty worktrees, ambiguous scope, missing trunk branches, invalid issue keys, or branch collisions.
+- Registered application repositories may be nested under a parent workspace; identify the owning Git checkout and its origin before branching or opening a PR.
+- A dirty bootstrap checkout may proceed only after explicit user authorization; preserve unrelated untracked content and stage only the approved story scope.
