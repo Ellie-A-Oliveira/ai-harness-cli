@@ -11,6 +11,6 @@ These rules are mandatory shared knowledge for every agent session:
 7. Run `harness security check-command "<command>"` before any shell command.
 8. Treat `blocked` commands as prohibited. Treat `requires_approval` commands as requiring explicit user approval before execution.
 9. Never place secrets, tokens, cookies, private keys, or sensitive personal data in commands, prompts, logs, indexed sources, or generated files.
-10. All harness CLI commands are pre-approved, including `harness ...`, `python3 -m harness ...`, and environment-prefixed forms. Other pre-approved prefixes are `git pull`, `git switch`, `npx next dev`, and `npm run build`.
+10. All harness CLI commands and non-destructive `git ...` commands are pre-approved, including environment-prefixed forms. Destructive Git commands remain blocked; inspect exact targets before any history or branch mutation.
 11. Use Conventional Commits for every repository: `type(scope): description`, such as `feat(cli): add command preflight` or `fix(index): ignore generated files`.
 12. Run `harness security check-commit "<message>"` before committing.

@@ -69,9 +69,9 @@ class Workspace:
         if not self.security_policy_path.exists():
             self.security_policy_path.write_text(json.dumps({
                 "version": 1,
-                "approved_prefixes": ["harness", "python3 -m harness", "git pull", "git switch", "npx next dev", "npm run build"],
+                "approved_prefixes": ["harness", "python3 -m harness", "git", "npx next dev", "npm run build"],
                 "safe_read_only_prefixes": ["pwd", "ls", "rg", "git status", "git diff", "git log", "git show", "git branch", "git rev-parse", "find", "sed", "head", "tail", "python3 -m unittest", "npm test"],
-                "blocked_prefixes": ["sudo", "rm", "rmdir", "git reset --hard", "git checkout --", "git clean", "dd", "mkfs", "chmod 777", "kill", "pkill"],
+                "blocked_prefixes": ["sudo", "rm", "rmdir", "git reset", "git checkout --", "git checkout -B", "git restore", "git clean", "git branch -d", "git branch -D", "git push --force", "git push -f", "git push --force-with-lease", "git switch --discard-changes", "git rebase", "git filter-repo", "git reflog delete", "git reflog expire", "git gc --prune", "git update-ref -d", "dd", "mkfs", "chmod 777", "kill", "pkill"],
                 "blocked_shell_tokens": [";", "&&", "||", "|", ">", "<", "`", "$(", "\\n"],
                 "requires_explicit_approval": ["network access", "package installation", "credential access", "destructive file operations", "external writes", "publishing or messaging"],
                 "notes": "This policy is a preflight check and documentation. OS sandboxing and user approval remain authoritative."
